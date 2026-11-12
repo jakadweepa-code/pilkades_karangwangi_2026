@@ -17,50 +17,81 @@
       justify-content: space-between; align-items: center; padding: 10px;
     }
     header { text-align: center; margin-top: 5px; }
-    .logo-kabupaten { width: 50px; height: auto; margin-bottom: 3px; }
-    header h1 { font-size: 1rem; font-weight: bold; color: #1e3a8a; max-width: 1000px; }
+    .logo-kabupaten { width: 45px; height: auto; margin-bottom: 2px; }
+    header h1 { 
+      font-size: 0.9rem; 
+      font-weight: bold; 
+      color: #1e3a8a; 
+      line-height: 1.3; 
+      max-width: 1000px; 
+    }
     
     .surat-suara-container {
-      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
-      width: 100%; max-width: 750px; margin: auto 0;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      gap: 15px; 
+      flex-wrap: nowrap; 
+      width: 100%; 
+      max-width: 700px; 
+      margin: auto 0;
+      padding: 5px;
     }
 
-    /* KARTU KANDIDAT PROPORSIONAL */
     .card-kandidat {
       background: white; border: 3px solid #3b82f6; border-radius: 8px;
-      padding: 10px; width: 210px; text-align: center; cursor: pointer;
+      padding: 8px; 
+      width: 190px;
+      text-align: center; cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s ease-in-out;
     }
     .card-kandidat:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3); }
     .card-kandidat.selected { border-color: #ef4444; background-color: #fef2f2; }
     
     .nomor-urut {
-      font-size: 1rem; font-weight: bold; color: #1e3a8a; background-color: #dbeafe;
-      padding: 4px; border-radius: 4px; margin-bottom: 8px; border: 1px solid #93c5fd;
+      font-size: 0.9rem; font-weight: bold; color: #1e3a8a; background-color: #dbeafe;
+      padding: 3px; border-radius: 4px; margin-bottom: 6px; border: 1px solid #93c5fd;
     }
 
-    /* BINGKAI FOTO PROPORSIONAL 3:4 */
+    /* BINGKAI FOTO STANDAR PORTRAIT */
     .frame-foto {
       width: 100%;
-      aspect-ratio: 3 / 4; /* Menjaga rasio pasfoto resmi */
+      aspect-ratio: 3 / 4;
       border: 2px solid #1e3a8a;
       background-color: #ef4444;
       overflow: hidden;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .frame-foto img { 
       width: 100%; 
       height: 100%; 
       object-fit: cover; 
-      object-position: top center; /* Fokus pada area wajah/kepala */
+      object-position: top center;
     }
 
-    .nama-calon { font-size: 0.9rem; font-weight: bold; color: #1f2937; }
+    /* PENGATURAN KHUSUS POSISI LANDSCAPE AGAR FOTO PROPORSIONAL DAN TIDAK KEPANJANGAN */
+    @media (orientation: landscape) {
+      .card-kandidat {
+        width: 150px; /* Lebar kartu sedikit disesuaikan di mode landscape */
+      }
+      .frame-foto {
+        height: 130px; /* Membatasi tinggi bingkai agar pas di layar mendatar */
+        aspect-ratio: auto; 
+      }
+      header h1 {
+        font-size: 0.8rem; /* Ukuran teks header menyesuaikan ruang vertikal */
+      }
+      .logo-kabupaten {
+        width: 35px;
+      }
+    }
+
+    .nama-calon { font-size: 0.85rem; font-weight: bold; color: #1f2937; }
     
     .btn-pilih-utama {
-      background-color: #ef4444; color: white; font-size: 1.1rem; font-weight: bold;
-      padding: 12px; border: none; border-radius: 6px; cursor: pointer;
-      width: 100%; max-width: 500px; margin-bottom: 10px;
+      background-color: #ef4444; color: white; font-size: 1rem; font-weight: bold;
+      padding: 10px; border: none; border-radius: 6px; cursor: pointer;
+      width: 100%; max-width: 400px; margin-bottom: 10px;
     }
 
     .modal-overlay {
@@ -70,18 +101,18 @@
     }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
     .modal-box {
-      background: white; border-radius: 12px; padding: 20px; width: 100%; max-width: 380px; text-align: center;
+      background: white; border-radius: 12px; padding: 15px; width: 90%; max-width: 330px; text-align: center;
     }
     .modal-foto { 
-      width: 120px; aspect-ratio: 3 / 4; border: 2px solid #1e3a8a; 
-      margin: 0 auto 8px auto; overflow: hidden; background: #ef4444;
+      width: 100px; aspect-ratio: 3 / 4; border: 2px solid #1e3a8a; 
+      margin: 0 auto 6px auto; overflow: hidden; background: #ef4444;
     }
     .modal-foto img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-    .modal-nama { font-size: 1rem; font-weight: bold; color: #111827; margin-bottom: 15px; }
+    .modal-nama { font-size: 0.9rem; font-weight: bold; color: #111827; margin-bottom: 12px; }
     .modal-actions { display: flex; gap: 10px; justify-content: center; }
-    .btn-ulangi { background-color: #9ca3af; color: white; border: none; padding: 8px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; flex: 1; }
-    .btn-pilih-pop { background-color: #16a34a; color: white; border: none; padding: 8px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; flex: 1; }
-    .ceklis-icon { font-size: 3rem; color: #16a34a; margin-bottom: 8px; }
+    .btn-ulangi { background-color: #9ca3af; color: white; border: none; padding: 6px 16px; font-weight: bold; border-radius: 6px; cursor: pointer; flex: 1; }
+    .btn-pilih-pop { background-color: #16a34a; color: white; border: none; padding: 6px 16px; font-weight: bold; border-radius: 6px; cursor: pointer; flex: 1; }
+    .ceklis-icon { font-size: 2.5rem; color: #16a34a; margin-bottom: 6px; }
 
     #area-bukti { display: none; }
     @media print {
@@ -98,7 +129,12 @@
   <div id="konten-simulasi">
     <header>
       <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Lambang_Kabupaten_Subang.png" alt="Logo" class="logo-kabupaten" onerror="this.style.display='none'">
-      <h1>SIMULASI PEMILIHAN KEPALA DESA KARANGWANGI KECAMATAN BINONG KABUPATEN SUBANG TAHUN 2026</h1>
+      <h1>
+        SIMULASI<br>
+        PEMILIHAN KEPALA DESA KARANGWANGI<br>
+        KECAMATAN BINONG KABUPATEN SUBANG<br>
+        TAHUN 2026
+      </h1>
     </header>
 
     <main class="surat-suara-container">
@@ -136,8 +172,8 @@
     <div class="modal-box">
       <div class="ceklis-icon">✅</div>
       <h2>Terima Kasih</h2>
-      <p style="color: #16a34a; font-weight: bold; margin-top: 8px;">Suara berhasil dikirim dan tersimpan</p>
-      <p style="font-size: 0.8rem; color: #6b7280; margin-top: 4px;">Halaman cetak bukti akan otomatis terbuka...</p>
+      <p style="color: #16a34a; font-weight: bold; margin-top: 6px;">Suara berhasil dikirim dan tersimpan</p>
+      <p style="font-size: 0.75rem; color: #6b7280; margin-top: 3px;">Halaman cetak bukti akan otomatis terbuka...</p>
     </div>
   </div>
 
